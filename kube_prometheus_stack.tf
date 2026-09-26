@@ -13,5 +13,5 @@ resource "helm_release" "kube_prometheus_stack" {
   version    = "69.3.2" # Specify the desired version
 
   values     = [file("${path.module}/kubernetes/helm/kube-prometheus-stack/values.yaml")]
-  depends_on = [kubernetes_namespace.monitoring]
+  depends_on = [helm_release.cert_manager]
 }
